@@ -2,6 +2,7 @@
   "name": "simple-chat",
   "version": "1.0.0",
   "description": "",
+  "author": "Vinoth kumar",
   "main": "index.js",
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -32,12 +33,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vino15/simple-chat.git"
+    "url": "git+https://github.com/vinothwino/simple-chat"
   },
-  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/vino15/simple-chat/issues"
+    "url": "https://github.com/vinothwino/simple-chat/issues"
   },
-  "homepage": "https://github.com/vino15/simple-chat#readme"
+  "homepage": "https://github.com/vinothwino/simple-chat#readme"
 }

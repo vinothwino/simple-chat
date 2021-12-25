@@ -1,39 +1,40 @@
 import { chatType } from './actionTypes'
 
-let { UPDATE_CHAT,GET_CHAT_LIST,UPDATE_CHAT_VIEW } = chatType
+let { UPDATE_CHAT, GET_CHAT_LIST, UPDATE_CHAT_VIEW } = chatType
 
 export default {
-    state : () => ({
-        chats :null,
-        selectedChatView : null
+    state: () => ({
+        chats: null,
+        selectedChatView: null
     }),
-    mutations : {
-        [GET_CHAT_LIST](state,payload){
-            state.chats=payload
+    mutations: {
+        [GET_CHAT_LIST](state, payload) {
+            state.chats = payload
         },
-        [UPDATE_CHAT_VIEW](state,payload){
+        [UPDATE_CHAT_VIEW](state, payload) {
             state.selectedChatView = payload
         },
-        [UPDATE_CHAT](state,payload){
-            state.selectedChatView.chats = [...state.selectedChatView.chats,payload]
+        [UPDATE_CHAT](state, payload) {
+            state.selectedChatView.chats = [...state.selectedChatView.chats, payload]
         }
     },
-    actions : {
-        updateChatList({ commit },chats){
-            commit(GET_CHAT_LIST,chats)
+    actions: {
+        updateChatList({ commit }, chats) {
+            commit(GET_CHAT_LIST, chats)
         },
-        updateChatView({ commit },view){
-            commit(UPDATE_CHAT_VIEW,view)
+        updateChatView({ commit }, view) {
+            commit(UPDATE_CHAT_VIEW, view)
         },
-        UpdateChat({ commit }, chat){
-            commit(UPDATE_CHAT,chat)
+        UpdateChat({ commit }, chat) {
+            console.log({ commit }, chat)
+            commit(UPDATE_CHAT, chat)
         }
     },
-    getters : {
-        getChatList(state){
+    getters: {
+        getChatList(state) {
             return state.chats
         },
-        getChatView(state){
+        getChatView(state) {
             return state.selectedChatView
         }
     }
