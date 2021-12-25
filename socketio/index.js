@@ -6,11 +6,7 @@ async function socketEvents(io) {
     io.on('connection', function (socket) {
 
         socket.on('join room', function (room, user) {
-
-
-
-
-            //Sace user
+            //user
             socket.user = user
 
             //Join user
