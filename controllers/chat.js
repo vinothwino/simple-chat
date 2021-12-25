@@ -5,7 +5,7 @@ const message = require('../messages.json')
 const _ = require('lodash')
 
 module.exports = {
-    getChatList : async (req,res) => {
+    getChatList: async (req, res) => {
         let lookUpQuery = {
             $lookup: {
                 from: 'rooms',
@@ -23,21 +23,17 @@ module.exports = {
 
         let unwind = { "$unwind": "$rooms" }
 
-        // let lookUpQuery2 = {
-        //     $lookup: {
-        //         from: 'users',
-        //         localField: 'rooms.participant',
-        //         foreignField: 'mobileNumber',
-        //         as: 'friendDetail'
-        //     }
-        // }
+        let chatList = await ChatModel.aggregate([lookUpQuery, matchQuery, unwind])
 
-        let data = await ChatModel.aggregate([lookUpQuery, matchQuery,unwind])
-        
+        let friendsList = await FriendModel.findOne({ userId: req.user._id }).then(data => data.friends)
 
+        let response = {
+            chatList,
+            friendsList
+        }
 
         res.status(200).json(
-            formatResponse(200, data, message.SUCCESS_GET_FRIEND_LIST)
+            formatResponse(200, response, message.SUCCESS_GET_FRIEND_LIST)
         )
     }
 }

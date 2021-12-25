@@ -88,7 +88,7 @@ export default {
     },
     init() {
       this.getSocket.emit("join room", this.getChatView.room, this.getProfile);
-      this.getSocket.on("message", this.UpdateChat);
+      this.getSocket.off("message").on("message", this.UpdateChat);
     },
     scrollToBottom() {
       let scrollbarContainer = document.getElementById("chats-container");

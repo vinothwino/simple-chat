@@ -4,7 +4,10 @@ let { UPDATE_CHAT, GET_CHAT_LIST, UPDATE_CHAT_VIEW } = chatType
 
 export default {
     state: () => ({
-        chats: null,
+        chats: {
+            chatList: [],
+            friendsList: []
+        },
         selectedChatView: null
     }),
     mutations: {
